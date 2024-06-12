@@ -1,11 +1,9 @@
 import os
 from datetime import datetime
 
-import arrow
+import discord
 import requests
 from ics import Calendar
-
-import discord
 
 intents = discord.Intents.default()
 intents.messages = True
