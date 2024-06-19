@@ -59,9 +59,9 @@ def get_the_state_of_the_world_from_cozi() -> [[Event], [Event], [Event]]:
         if 'birthday' in event.name:
             event.end = event.end.replace(year=9999)
             event.begin = event.begin.replace(year=datetime.now().year)
-        if 'ago' in event.begin.humanize():
+        if 'ago' in event.begin.humanize() and 'hours' not in event.begin.humanize():
             past_events.append(event)
-        elif 'a week' in event.begin.humanize() or 'day' in event.begin.humanize():
+        elif 'a week' in event.begin.humanize() or 'day' in event.begin.humanize() or 'hours' in event.begin.humanize():
             near_future_events.append(event)
         elif 'in' in event.begin.humanize():
             far_future_events.append(event)
