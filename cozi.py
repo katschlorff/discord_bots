@@ -56,6 +56,7 @@ def get_the_state_of_the_world_from_cozi() -> [[Event], [Event], [Event]]:
     far_future_events = []
     past_events = []
     for event in cal.events:
+        print(event)
         if 'birthday' in event.name:
             event.end = event.end.replace(year=9999)
             event.begin = event.begin.replace(year=datetime.now().year)
@@ -87,9 +88,11 @@ async def on_ready():  # Called when internal cache is loaded
     # cozi_digest_thread = channel.create_thread(name=f'Cozi Digest for {arrow.now().date()}')
     # await channel.send(embed=embeds[0]) #  past
     await channel.send(embed=embeds[1])  # soon
+    await channel.send(embed=embeds[2])
     # await cozi_digest_thread.send(embed=embeds[2]) # future
     await cozi_bot_client.close()
 
 
 if __name__ == '__main__':
     asyncio.run(cozi_bot_client.run(token=discord_token))
+    cozi_bot_client.close()
